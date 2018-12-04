@@ -8,7 +8,7 @@ DB_NAME=
 
 ------
 
-2. Tạo lớp trừu tượng tên `Model` có method public dbConfig() {} để connect DB load config từ file config.
+2. Tạo lớp trừu tượng tên `Model` có method public dbConfig() {} để connect DB load config từ file `config.php`.
   Method này được tự động load lúc khởi tạo.
 
 ------
