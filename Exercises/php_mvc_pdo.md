@@ -3,14 +3,15 @@
 ```
 <NAME>_PHP_BASIC
 |
- -- Model
+ -- Models
    |
     -- config.php
+    -- Model.php
     -- User.php
     -- Skill.php 
     -- Score.php
 | 
- -- View
+ -- Views
    |
     -- User
        |
@@ -22,7 +23,7 @@
        |
         -- index.php
 | 
- -- Controller
+ -- Controllers
    |
     -- UserController.php
     -- SkillController.php
