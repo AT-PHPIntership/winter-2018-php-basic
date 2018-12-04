@@ -1,5 +1,38 @@
 
-1. tạo file config.php có const db connection :
+* Cấu Trúc Thư Mục
+```
+|
+ -- Model
+   |
+    -- config.php
+    -- User.php
+    -- Skill.php 
+    -- Score.php
+| 
+ -- View
+   |
+    -- User
+       |
+        -- index.php
+    -- Skill
+       |
+        -- index.php
+    -- Score
+       |
+        -- index.php
+| 
+ -- Controller
+   |
+    -- UserController.php
+    -- SkillController.php
+    -- ScoreController.php
+    -- BaseController.php
+ 
+```
+
+------------- Bài Tập ------------------
+
+1. tạo class Config trong file config.php có const db connection :
 DB_HOST=
 DB_USERNAME=
 DB_PASSWORD=
@@ -8,7 +41,7 @@ DB_NAME=
 
 ------
 
-2. Tạo lớp trừu tượng tên `Model` có method public dbConfig() {} để connect DB load config từ file `config.php`.
+2. Tạo lớp trừu tượng tên `Model` có method public dbConfig() {} để connect DB load config từ Class Config trong file `config.php`.
   Method này được tự động load lúc khởi tạo.
 
 ------
