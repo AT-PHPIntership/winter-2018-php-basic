@@ -1,0 +1,7 @@
+*.yml
+*.conf
+*.json
+.vscode
+php*/
+/vendor
+/node_modules
