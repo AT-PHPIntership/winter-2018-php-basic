@@ -1,7 +1,6 @@
 
 * Cấu Trúc Thư Mục
 ```
-<NAME>_PHP_BASIC
 |
  -- Models
    |
