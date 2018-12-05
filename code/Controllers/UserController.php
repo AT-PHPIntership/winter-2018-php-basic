@@ -10,7 +10,14 @@ class UserController extends PHP\Controllers\BaseController
     }
 
     function store() {
-        
+        $param = [
+            'username' => 'Thanh',
+            'gender' => 0,
+            'provinceId' => 1
+        ];
+        $show = new User();
+        $result = $show->insert($param);
+        $this->render('index', $result);
     }
     public function index()
     {
