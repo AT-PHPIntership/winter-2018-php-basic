@@ -9,17 +9,13 @@
 <body>
     <table border="1">
         <tr>
-            <th>User Name</th>
-            <th>Gender</th>
-            <th>Province</th>
+            <th>Name</th>
         </tr>
+        <?php foreach($data as $val) : ?>
         <tr>
-            <?php foreach($data as $val) : ?>
-                <td><?php echo $val['username'] ?></td>
-                <td><?php echo $val['gender'] ?></td>
-                <td><?php echo $val['province_name'] ?></td>
-            <?php endforeach ?>
+            <td><?php echo $val['name'] ?></td>
         </tr>
+        <?php endforeach ?>
     </table> 
 </body>
 </html>

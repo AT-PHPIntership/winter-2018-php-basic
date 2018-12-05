@@ -19,7 +19,7 @@ class UserController extends BaseController
         ];
         $user = new User();
         $result = $user->insert($data);
-        $this->render('store', $result);
+        $this->render('index', $result);
     }
     public function index()
     {
