@@ -27,11 +27,16 @@ class Score extends Model {
     }
     public function skillFavorite() {
         $stmt = $this->connect->prepare('
-            select skill.skill_name, count(score.user_id) as skill_num
+            select skill.skill_name, count(*) as skill_num
             from score
             join skill on score.skill_id = skill.skill_id
             group by score.skill_id
-            order by skill_num desc limit 1 ');
+            having skill_num = (select count(*) as skill_num
+                        from score
+                        join skill on score.skill_id = skill.skill_id
+                        group by score.skill_id
+                        order by skill_num desc limit 1
+                        );');
         $stmt->execute();
         $result = $stmt->fetchAll();
         return $result;
@@ -43,7 +48,12 @@ class Score extends Model {
             join skill on score.skill_id = skill.skill_id
             join user on score.user_id = user.user_id
             group by score.skill_id
-            order by avg_skill_score desc limit 1,1');
+            having avg_skill_score = (
+                select avg(score) as avg_skill_score
+                from score
+                group by score.skill_id
+                order by avg_skill_score desc limit 1,1
+        )');
         $stmt->execute();
         $result = $stmt->fetchAll();
         return $result;
