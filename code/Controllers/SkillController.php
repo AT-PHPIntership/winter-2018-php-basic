@@ -40,7 +40,7 @@ class SkillController extends BaseController
         $id = 7;
         $skill = new Skill();
         $result = $skill->delete($id);
-        echo $result;
+        return $result;
     }
 
     public function error()
