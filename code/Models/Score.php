@@ -36,11 +36,23 @@ class Score extends Model
     }
 
     function skillHasSecondPoint(){
-        $stmt = $this->$connect->prepare('select skill.name skill_name, AVG(score.score) avg_score, group_concat(user.name) group_user_name 
-        FROM user join score ON user.id = score.user_id LEFT JOIN  skill ON score.skill_id = skill.id 
-        GROUP BY skill.id HAVING avg_score = (select AVG(score.score) avg_score
-        FROM user join score ON user.id = score.user_id LEFT JOIN  skill ON score.skill_id = skill.id 
-        GROUP BY skill.id ORDER BY avg_score DESC LIMIT 1,1) ORDER BY avg_score');
+        $stmt = $this->$connect->prepare('select sk.name skill_name, AVG(s.score) avg_score, group_concat(u.name) group_user_name 
+        FROM user u join score s ON u.id = s.user_id LEFT JOIN  skill sk ON s.skill_id = sk.id 
+        GROUP BY sk.id 
+        HAVING avg_score = (select AVG(s2.score) avg_score_2 
+            FROM user u2 
+            join score s2 ON u2.id = s2.user_id 
+            LEFT JOIN  skill sk2 ON s2.skill_id = sk2.id 
+            GROUP BY sk2.id 
+                HAVING avg_score_2 < (select AVG(s3.score) avg_score_3 
+                FROM user u3 
+                join score s3 ON u3.id = s3.user_id 
+                LEFT JOIN  skill sk3 ON s3.skill_id = sk3.id 
+                GROUP BY sk3.id 
+                ORDER BY avg_score_3 DESC 
+                LIMIT 1)
+            ORDER BY avg_score_2 DESC 
+            LIMIT 1)');
         $stmt->execute();
         $result = $stmt->fetchAll();
         return $result;
