@@ -13,13 +13,12 @@ class ScoreController extends PHP\Controllers\BaseController
     function avgUser() {
         $score = new Score();
         $result = $score->avgSore();
-        var_dump($result);
         $this->render('avg', ['data' => $result]);
     }
     public function maxSkillOfUser()
     {   
         $score = new Score();
-        $result = $score->maxSkillOfUser();
+        $result = $score->maxOfUser();
         $this->render('maxSkillOfUser', $result);
         
         
@@ -32,7 +31,9 @@ class ScoreController extends PHP\Controllers\BaseController
         $this->render('skillFavorite', ['data' => $result]);
     }
     function skillHasSecondPoint() {
-        
+        $score = new Score();
+        $result = $score->skillHasSecondPoint();
+        $this->render('skillHasSecondPoint', ['data' => $result]);
     }
 
     public function error()
