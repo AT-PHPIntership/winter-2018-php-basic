@@ -1,5 +1,5 @@
 <?php
 
-echo "Welcome to PHP Training";
+    echo "Welcome to PHP Training";
 
 ?>

@@ -19,7 +19,7 @@ class Score extends Model
     $avg_users = $this->connect->prepare($sql);
     $avg_users->execute();
     $result = $avg_users->fetchAll();
-    return $result;    
+    return $result;
   }
 
   public function maxScore()
@@ -37,7 +37,7 @@ class Score extends Model
     $max_score = $this->connect->prepare($sql);
     $max_score->execute();
     $result = $max_score->fetchAll();
-    return $result;    
+    return $result;
   }
 
   public function maxUser()
@@ -56,7 +56,7 @@ class Score extends Model
     $max_users = $this->connect->prepare($sql);
     $max_users->execute();
     $result = $max_users->fetchAll();
-    return $result;    
+    return $result;
   }
 
   public function max2_Score()
@@ -69,8 +69,8 @@ class Score extends Model
             on  sk.id= sc.skill_id
             group by sc.skill_id
             having avg_score = ( 
-                 select avg(score) avg_score
-                 from score
+                select avg(score) avg_score
+                from score
                 group by skill_id
                 having avg_score < (
                   select avg(score) avg_score
@@ -84,6 +84,6 @@ class Score extends Model
     $max2_score = $this->connect->prepare($sql);
     $max2_score->execute();
     $result = $max2_score->fetchAll();
-    return $result;    
+    return $result;
   }
 }

@@ -1,7 +1,7 @@
 
 * Cấu Trúc Thư Mục
 ```
-|
+| 
  -- Models
    |
     -- config.php
